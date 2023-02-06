@@ -55,7 +55,7 @@ public class RegisterEntity {
 		return studentId;
 	}
 
-	public void setId(Integer studentId) {
+	public void setStudentId(Integer studentId) {
 		this.studentId = studentId;
 	}
 

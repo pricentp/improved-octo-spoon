@@ -7,28 +7,27 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import com.example.accessingdatamysql.model.Student;
-import com.example.accessingdatamysql.service.repo.StudentRepository;
-import com.example.accessingdatamysql.service.repo.entity.StudentEntity;
+import com.example.accessingdatamysql.service.repo.CourseRepository;
+import com.example.accessingdatamysql.service.repo.entity.CourseEntity1;
+import com.example.accessingdatamysql.model.course;
 
 @Service    
-public class couseService {
-    private StudentRepository studentRepository;
+public class courseService {
+    private CourseRepository courseRepository;
 
-    public Course save(Course course) {
-        CourseEntity CourseEntity = new CourseEntity();
-        CourseEntity.setCourseID(course.getCourseID());
+    public course save(course course) {
+        CourseEntity1 CourseEntity = new CourseEntity1();
+        CourseEntity.setCourseId(course.getCourseid());
         CourseEntity.setName(course.getName());
         CourseEntity.setCredit(course.getCredit());
         CourseEntity.setMaxSeat(course.getMaxSeat());
 
 
-		CourseEntity resultCourseEntity = studentRepository.save(CourseEntity);
+		CourseEntity1 resultCourseEntity = courseRepository.save(CourseEntity);
 
 
-        Student resultCourse = new Student();
-        resultCourse.setCourseId(resultCourseEntity.getCourseId());
+        course resultCourse = new course();
+        resultCourse.setCourseid(resultCourseEntity.getCourseId());
         resultCourse.setName(resultCourseEntity.getName());
         resultCourse.setCredit(resultCourseEntity.getCredit());
         resultCourse.setMaxSeat(resultCourseEntity.getMaxSeat());

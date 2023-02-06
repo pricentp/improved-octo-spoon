@@ -1,3 +1,8 @@
+package com.example.accessingdatamysql.model;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class course{
     private Integer Courseid;
 	private String Name;
@@ -9,7 +14,7 @@ public class course{
 	}
 
 	public void setCourseid(Integer Courseid) {
-		this.id = Courseid;
+		this.Courseid = Courseid;
 	}
 
 	public String getName() {

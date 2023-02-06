@@ -9,18 +9,20 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import com.example.accessingdatamysql.service.courseService;
+import com.example.accessingdatamysql.model.course;
 
 @Controller
 public class CourseController {
     
     @Autowired
-    private CourseService courseService;
+    private courseService courseService;
 
     //add course
     @RequestMapping(path = "/addcourse", method = RequestMethod.POST)
-    public @ResponseBody ResponseEntity<Object> addCourse(@RequestBody Course course) {
+    public @ResponseBody ResponseEntity<Object> addCourse(@RequestBody course c) {
         
-        Course resultCourse = courseService.save(course);
+        course resultCourse = courseService.save(c);
 
         return ResponseEntity.status(HttpStatus.OK).body(resultCourse);
     }

@@ -43,11 +43,11 @@ public class CourseEntity1 {
 
 
 
-	public Integer getId() {
+	public Integer getCourseId() {
 		return courseId;
 	}
 
-	public void setId(Integer courseId) {
+	public void setCourseId(Integer courseId) {
 		this.courseId = courseId;
 	}
 

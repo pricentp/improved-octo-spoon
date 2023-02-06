@@ -12,15 +12,12 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.boot.*;
 
 import com.example.accessingdatamysql.model.Student;
 import com.example.accessingdatamysql.service.StudentService;
@@ -36,14 +33,14 @@ public class StudentController {
 	/*
 	 * @return list all students in a JSONArray with JSONObjects transfermed from Student models
 	 */
-	// @RequestMapping(path="/students", method=RequestMethod.GET) 
-	@GetMapping(path = "/students") // Compliant
+	@RequestMapping(path="/students", method=RequestMethod.GET) 
 	public @ResponseBody ResponseEntity<Object> getAllStudents() {
 
 		Iterable<Student> resultList = studentService.findAll();
 
 		return ResponseEntity.status(HttpStatus.OK).body(resultList);
 	}
+
 
 	/*
 	 * @param student - the Student model with name and optional email  
@@ -56,27 +53,14 @@ public class StudentController {
 	 *   <li>email - parametered email</li>
 	 * </ul>
 	 */
-	/*
-	 * @return the number of students
-	 */
-	// @RequestMapping(path="/students", method=RequestMethod.POST) 
-	@PostMapping(path = "/students") // Compliant
-	public @ResponseBody ResponseEntity<Object> addStudents(@RequestBody Student student) {
+	//@.. TODO: Add your code here 
 
-		Student result = studentService.save(student);
+	@RequestMapping(path="/students", method=RequestMethod.POST) 
+	public @ResponseBody ResponseEntity<Object> addStudent(@RequestBody Student s) {
 
-		HashMap<String, Object> map = new HashMap<>();
-		map.put("description", String.format("SAVED ID: %s!", result.getId()));
-		map.put("student", result);
-		return ResponseEntity.status(HttpStatus.OK).body(map);
+		Student resultStudent = studentService.add(s);
+
+		return ResponseEntity.status(HttpStatus.CREATED).body(resultStudent.getId());
 	}
 
-	// @RequestMapping(path="/students/count", method=RequestMethod.GET) 
-	@GetMapping(path = "/students/count") // Compliant
-	public @ResponseBody ResponseEntity<Object> countStudents(@RequestParam(name="isActive", defaultValue="true") boolean isActive) {
-
-		int count = studentService.countStudents(isActive);
-
-		return ResponseEntity.status(HttpStatus.OK).body(count);
-	}
 }
