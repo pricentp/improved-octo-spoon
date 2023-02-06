@@ -13,14 +13,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class EnrollCourseController {
 
     @Autowired
-    private EnrollCourseService enrollCourseService;
+    private RegisterService registerService;
 
     //add student enroll
-    @RequestMapping(path = "/enrollcourse", method = RequestMethod.POST)
-    public @ResponseBody ResponseEntity<Object> addCourse(@RequestBody EnrollCourse stc) {
+    @RequestMapping(path = "/registercourse", method = RequestMethod.POST)
+    public @ResponseBody ResponseEntity<Object> addCourse(@RequestBody Register register) {
         
-        EnrollCourse resultEnrollCourse = enrollCourseService.add(stc);
+        Register resultRegister = registerService.save(register);
 
-        return ResponseEntity.status(HttpStatus.CREATED).body(resultEnrollCourse);
+        return ResponseEntity.status(HttpStatus.OK).body(resultRegister);
     }
 }

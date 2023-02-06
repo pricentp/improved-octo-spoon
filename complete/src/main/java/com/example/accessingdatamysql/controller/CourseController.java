@@ -14,14 +14,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class CourseController {
     
     @Autowired
-    private EnrollService enrollService;
+    private CourseService courseService;
 
     //add course
     @RequestMapping(path = "/addcourse", method = RequestMethod.POST)
     public @ResponseBody ResponseEntity<Object> addCourse(@RequestBody Course course) {
         
-        Course resultCourse = countService.add(course);
+        Course resultCourse = courseService.save(course);
 
-        return ResponseEntity.status(HttpStatus.CREATED).body(resultCourse);
+        return ResponseEntity.status(HttpStatus.OK).body(resultCourse);
     }
 }
