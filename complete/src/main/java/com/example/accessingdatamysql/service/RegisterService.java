@@ -22,10 +22,10 @@ public class RegisterService {
         RegisterEntity registerEntity = new RegisterEntity();
 		registerEntity.setStudentID(register.getStudentID());
 		registerEntity.setCourse1(register.getCourse1());
-		registerEntity.setCourse2(register.getCourse2())                                      // 0: Expired, 1: Active (Default)
-		registerEntity.setCourse3(register.getCourse3())
-        registerEntity.setCourse4(register.getCourse4())
-        registerEntity.setCourse5(register.getCourse5())
+		registerEntity.setCourse2(register.getCourse2());                                      // 0: Expired, 1: Active (Default)
+		registerEntity.setCourse3(register.getCourse3());
+        registerEntity.setCourse4(register.getCourse4());
+        registerEntity.setCourse5(register.getCourse5());
 
 
 		RegisterEntity resultRegisterEntity = studentRepository.save(registerEntity);
